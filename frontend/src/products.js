@@ -1,13 +1,13 @@
 const products = [
   {
     _id: '1',
-    name: 'Airpods Wireless Bluetooth Headphones',
-    image: '/images/airpods.jpg',
+    name: 'Apple AirPods Pro 2, Active Noise Cancellation',
+    image: '/images/airpods-pro-2.jpg',
     description:
-      'Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
+      'Introducing AirPods Pro 2. Revolutionary noise cancellation that adapts to your environment. Immersive sound with personalized Spatial Audio. All-day battery life for uninterrupted listening.',
     brand: 'Apple',
     category: 'Electronics',
-    price: 89.99,
+    price: 189.99,
     countInStock: 10,
     rating: 4.5,
     numReviews: 12,
