@@ -1,32 +1,34 @@
+
+
 const products = [
   {
-    _id: '1',
-    name: 'Apple AirPods Pro 2, Active Noise Cancellation',
-    image: '/images/airpods-pro-2.jpg',
+    _id: "1",
+    name: 'Airpods Wireless Bluetooth Headphones',
+    image: '/images/airpods.jpg',
     description:
-      'Introducing AirPods Pro 2. Revolutionary noise cancellation that adapts to your environment. Immersive sound with personalized Spatial Audio. All-day battery life for uninterrupted listening.',
+      'Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
     brand: 'Apple',
     category: 'Electronics',
-    price: 189.99,
+    price: 89.99,
     countInStock: 10,
     rating: 4.5,
     numReviews: 12,
   },
   {
-    _id: '2',
-    name: 'iPhone 16 Pro 256GB With Apple Intelligence',
-    image: '/images/iphone16.jpeg',
+    _id: "2",
+    name: 'iPhone 13 Pro 256GB Memory',
+    image: '/images/phone.jpg',
     description:
-      'Introducing the iPhone 16 Pro. A revolutionary Pro camera system that captures stunning photos and videos. All-day battery life that powers your day.',
+      'Introducing the iPhone 13 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life',
     brand: 'Apple',
     category: 'Electronics',
-    price: 999.99,
+    price: 599.99,
     countInStock: 7,
     rating: 4.0,
     numReviews: 8,
   },
   {
-    _id: '3',
+    _id: "3",
     name: 'Cannon EOS 80D DSLR Camera',
     image: '/images/camera.jpg',
     description:
@@ -39,8 +41,8 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '4',
-    name: 'Sony Playstation 4 Pro White Version',
+    _id: "4",
+    name: 'Sony Playstation 5',
     image: '/images/playstation.jpg',
     description:
       'The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music',
@@ -52,7 +54,7 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '5',
+    _id: "5",
     name: 'Logitech G-Series Gaming Mouse',
     image: '/images/mouse.jpg',
     description:
@@ -65,7 +67,7 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: '6',
+    _id: "6",
     name: 'Amazon Echo Dot 3rd Generation',
     image: '/images/alexa.jpg',
     description:
@@ -77,6 +79,8 @@ const products = [
     rating: 4,
     numReviews: 12,
   },
-]
+];
 
-export default products
+
+
+export default products;
