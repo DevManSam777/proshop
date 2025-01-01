@@ -1,9 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
+import connetDB from './config/db.js';
 import products from './data/products.js';
 import { doesNotThrow } from 'assert';
 const port = process.env.PORT || 5000;
+
+connetDB();
 
 const app = express();
 
