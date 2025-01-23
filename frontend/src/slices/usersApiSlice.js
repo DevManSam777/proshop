@@ -10,7 +10,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 body: data,
             }),
             keepUnusedDataFor: 5,
-        })
+        }),
     }),
 });
 
