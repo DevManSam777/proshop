@@ -4,7 +4,6 @@ import cookieParser from 'cookie-parser';
 dotenv.config();
 import connetDB from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
-import { doesNotThrow } from 'assert';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
