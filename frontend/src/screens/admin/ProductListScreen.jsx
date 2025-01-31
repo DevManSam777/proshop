@@ -42,7 +42,7 @@ const createProductHandler = async () => {
 
     { isLoading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
         <>
-            <Table striped hover resonsive className='table-sm'>
+            <Table striped hover responsive className='table-sm'>
                 <thead>
                     <tr>    
                         <th>ID</th>
@@ -72,7 +72,7 @@ const createProductHandler = async () => {
                                 </Button>
                             </td>
                         </tr>
-                     ))};
+                     ))}
                 </tbody>
             </Table>
         </>
