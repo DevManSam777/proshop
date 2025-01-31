@@ -18,6 +18,7 @@ const deleteHandler = async (id) => {
         try {
             await deleteProduct(id);
             refetch();
+            toast.success('Product deleted');
         } catch (err) {
             toast.error(err?.data?.message || err.message);
         }
