@@ -138,7 +138,7 @@ const getUsers = asyncHandler(async (req, res) => {
 // @access Private/Admin
 
 const getUserByID = asyncHandler(async (req, res) => {
-    const user = awaitUser.findById(req.params.id).select('-passowrd');
+    const user = await User.findById(req.params.id).select('-passowrd');
 
     if (user) {
         res.status(200).json(user);

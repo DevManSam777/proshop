@@ -26,7 +26,7 @@ const UserListScreen = () => {
   return <>
     <h1>Users</h1>
     {loadingDelete && <Loader />}
-    {isLoading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
+    {isLoading ? <Loader /> : error ? <Message variant="danger">{error.data.message}</Message> : (
       <Table striped hover responsive className='table-sm'>
         <thead>
           <tr>
@@ -52,7 +52,7 @@ const UserListScreen = () => {
                   )}
                   </td>
               <td>
-                <LinkContainer to={`admin/user/${user._id}/edit}`}>
+                <LinkContainer to={`/admin/user/${user._id}/edit`}>
                   <Button variant='light' className='btn-sm'>
                     <FaEdit />
                     </Button>
