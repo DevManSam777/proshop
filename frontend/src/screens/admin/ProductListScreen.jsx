@@ -8,7 +8,6 @@ import { useGetProductsQuery, useCreateProductMutation, useDeleteProductMutation
 import { toast } from 'react-toastify';
 import Paginate from '../../components/Paginate';
 
-
 const ProductListScreen = () => {
     const { pageNumber } = useParams();
 
