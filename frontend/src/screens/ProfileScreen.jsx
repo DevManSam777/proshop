@@ -82,7 +82,7 @@ const ProfileScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='confirmPassword' className='my-2'>
-                <Form.Label>ConfirmPassword</Form.Label>
+                <Form.Label>Confirm Password</Form.Label>
                 <Form.Control
                     type='password'
                     placeholder='Confirm password'
