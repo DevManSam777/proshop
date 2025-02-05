@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Message from '../components/Message';
 import { Form, Row, Col, Image, ListGroup, Button, Card, ListGroupItem } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import Meta from '../components/Meta';
 import Rating from '../components/Rating';  
 import Loader from '../components/Loader';   
 import { useGetProductDetailsQuery, useCreateReviewMutation } from '../slices/productsApiSlice';
@@ -69,6 +70,7 @@ const submitHandler = async (e) => {
             </Message>
         ) : (
             <>
+                <Meta />
             <Row>
             <Col md={5}>
                 <Image src={product.image} alt={product.name} fluid />    
