@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap';
+import { Row, Col, ListGroup, Image, Card, Button, Alert } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
@@ -10,6 +10,7 @@ import { useGetOrderDetailsQuery, usePayOrderMutation, useGetPayPalClientIdQuery
 
 const OrderScreen = () => {
     const { id: orderId } = useParams();
+    const [copiedField, setCopiedField] = useState(null);
 
     const { data: order, refetch, error, isLoading } = useGetOrderDetailsQuery(orderId);
 
@@ -22,6 +23,17 @@ const OrderScreen = () => {
     const { data: paypal, isLoading: loadingPayPal, error: errorPayPal, } = useGetPayPalClientIdQuery();
 
     const { userInfo } = useSelector((state) => state.auth);
+
+    const copyToClipboard = async (text, field) => {
+        try {
+            await navigator.clipboard.writeText(text);
+            setCopiedField(field);
+            toast.success(`${field} copied to clipboard!`);
+            setTimeout(() => setCopiedField(null), 2000);
+        } catch (err) {
+            toast.error('Failed to copy to clipboard');
+        }
+    };
 
     useEffect(() => {
         if (!errorPayPal && !loadingPayPal && paypal.clientId) {
@@ -181,6 +193,69 @@ const OrderScreen = () => {
 
                                     { isPending ? <Loader /> : (
                                         <div>
+                                            {/* Sandbox Test Credentials */}
+                                            {paypal?.sandboxEmail && (
+                                                <Alert variant="info" className="mb-3">
+                                                    <Alert.Heading style={{ fontSize: '1rem' }}>
+                                                        PayPal Sandbox Test Credentials
+                                                    </Alert.Heading>
+                                                    <p style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>
+                                                        Use these credentials to test the checkout:
+                                                    </p>
+                                                    <div style={{
+                                                        backgroundColor: 'white',
+                                                        padding: '10px',
+                                                        borderRadius: '5px',
+                                                        fontSize: '0.75rem',
+                                                        fontFamily: 'monospace'
+                                                    }}>
+                                                        <div style={{ marginBottom: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                            <span>
+                                                                <strong>Email:</strong> {paypal.sandboxEmail}
+                                                            </span>
+                                                            <Button
+                                                                size="sm"
+                                                                variant={copiedField === 'Email' ? 'success' : 'outline-secondary'}
+                                                                onClick={() => copyToClipboard(paypal.sandboxEmail, 'Email')}
+                                                                style={{ fontSize: '0.7rem', padding: '2px 8px' }}
+                                                            >
+                                                                {copiedField === 'Email' ? '✓ Copied' : 'Copy'}
+                                                            </Button>
+                                                        </div>
+                                                        <div style={{ marginBottom: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                            <span>
+                                                                <strong>Password:</strong> {paypal.sandboxPassword}
+                                                            </span>
+                                                            <Button
+                                                                size="sm"
+                                                                variant={copiedField === 'Password' ? 'success' : 'outline-secondary'}
+                                                                onClick={() => copyToClipboard(paypal.sandboxPassword, 'Password')}
+                                                                style={{ fontSize: '0.7rem', padding: '2px 8px' }}
+                                                            >
+                                                                {copiedField === 'Password' ? '✓ Copied' : 'Copy'}
+                                                            </Button>
+                                                        </div>
+                                                        {paypal.sandboxCode && (
+                                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                                <span>
+                                                                    <strong>Code:</strong> {paypal.sandboxCode}
+                                                                </span>
+                                                                <Button
+                                                                    size="sm"
+                                                                    variant={copiedField === 'Code' ? 'success' : 'outline-secondary'}
+                                                                    onClick={() => copyToClipboard(paypal.sandboxCode, 'Code')}
+                                                                    style={{ fontSize: '0.7rem', padding: '2px 8px' }}
+                                                                >
+                                                                    {copiedField === 'Code' ? '✓ Copied' : 'Copy'}
+                                                                </Button>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                    <p style={{ fontSize: '0.65rem', fontStyle: 'italic', marginTop: '8px', marginBottom: '0' }}>
+                                                        If prompted for a confirmation code, use: {paypal.sandboxCode || '111111'}
+                                                    </p>
+                                                </Alert>
+                                            )}
                                             {/* <Button onClick={ onApproveTest} style={{marginBottom: '10px'}}>Test Pay Order</Button> */}
                                             <div>
                                                 <PayPalButtons
@@ -189,7 +264,7 @@ const OrderScreen = () => {
                                                 onError={onError}></PayPalButtons>
                                             </div>
                                         </div>
-                                    )} 
+                                    )}
                                 </ListGroup.Item>
                             )}
                             { loadingDeliver && <Loader /> }
