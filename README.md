@@ -1,4 +1,4 @@
-# ProShop v2
+# ProShop
 
 eCommerce application w/ admin dashboard, built with the MERN stack.  
 
